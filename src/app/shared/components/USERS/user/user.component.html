@@ -1,0 +1,42 @@
+<div class="container mt-3" *ngIf="userObj">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <mat-card class="shadow">
+        <img
+          mat-card-image
+          [src]="userObj.imageUrl"
+          alt="User Image"
+          class="bg-light"
+          style="height: 220px; width: 100%; object-fit: contain"
+        />
+        <mat-card-content>
+          <h5 class="text-center mt-2 mb-3">
+            {{ userObj.firstName }} {{ userObj.lastName }}
+          </h5>
+          <p class="mb-1"><strong>Email:</strong> {{ userObj.email }}</p>
+          <p class="mb-1"><strong>Phone:</strong> {{ userObj.phone }}</p>
+          <p class="mb-1"><strong>DOB:</strong> {{ userObj.dateOfBirth }}</p>
+          <p class="mb-1"><strong>Gender:</strong> {{ userObj.gender }}</p>
+          <p class="mb-1"><strong>Blood:</strong> {{ userObj.bloodGroup }}</p>
+          <p class="mb-2">
+            <strong>Address:</strong>
+            {{ userObj.address.city }},
+            {{ userObj.address.state }}
+          </p>
+          <strong>Skills</strong>
+          <mat-chip-list class="mt-2">
+            <mat-chip
+              *ngFor="let skill of userObj.skills"
+            >
+              {{ skill }}
+            </mat-chip>
+          </mat-chip-list>
+        </mat-card-content>
+        <mat-card-actions class="d-flex justify-content-between">
+          <button mat-raised-button color="primary" routerLink="edit">Edit</button>
+          <button mat-raised-button color="warn" (click)="onRemoveUser()">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

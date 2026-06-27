@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row mb-5 d-flex justify-content-end">
+    <button mat-raised-button color="primary" routerLink="addProduct">Add Product</button>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="alert alert-success text-center">Product List</p>
+          <ul class="list-group">
+            <li
+              [routerLink]="[product.id]"
+              *ngFor="let product of getAllProduct"
+              class="list-group-item"
+            >
+              {{ product.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
